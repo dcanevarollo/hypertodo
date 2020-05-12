@@ -1,0 +1,68 @@
+<!--
+    @author : Douglas Canevarollo
+    @date   : 12/03/2020
+-->
+<!DOCTYPE html>
+<html
+  lang="pt_BR"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="fragments/layout :: layout(~{::title}, ~{::link}, _, ~{::main})"
+>
+  <head>
+    <title>Entrar</title>
+
+    <link rel="stylesheet" th:href="@{/resources/styles/login/index.css}">
+    <link rel="stylesheet" th:href="@{/resources/styles/shared.css}">
+  </head>
+
+  <body>
+    <main>
+
+      <div class="page-container">
+
+        <div class="left">
+          <div class="card-header">
+            <img src="index.html" th:src="@{/resources/images/hypertodo_logo.png}" alt="Logo" height="50px"/>
+          </div>
+          <div class="signup">
+            <h2 class="mb-20 black-title">BEM VINDO DE VOLTA!</h2>
+            <p>Digite seu email e Senha para continuar</p>
+            <p class="mb-10">Não possui uma conta?</p>
+            <a href="/usuarios/cadastro" class="link-cadastro" th:href="@{/usuarios/cadastro}">Cadastre-se!</a>
+          </div>
+        </div>
+
+        <div class="right">
+          <h2 class="withe-title">FAZER LOGIN</h2>
+          <p class="mb-20">Entre com sua conta para ver suas tarefas</p>
+
+          <form action="index.html" th:action="@{/login}" method="post">
+            <div class="form-container">
+
+              <div class="field-container">
+                <input id="email-input" class="input light" type="email" name="username" placeholder="Digite seu e-mail" required autofocus>
+                <label for="email-input"><i class="fas fa-envelope input-icon"></i></label>
+              </div>
+
+              <div class="field-container">
+                <input id="password-input" class="input light" type="password" name="password" placeholder="Digite sua senha" required>
+                <label for="password-input"><i class="fas fa-lock input-icon"></i></label>
+              </div>
+
+              <button type="submit" class="primary-button">Entrar</button>
+
+              <span th:if="${param.error != null}" class="error-message">E-mail ou senha incorretos</span>
+            </div>
+          </form>
+          <p class="copyright">Copyright 2020 - Grupo de Banco de Dados (GBD)</p>
+        </div>
+      </div>
+
+      <!--/*@thymesVar id="message" type="com.grupogbd.treinamento.hypertodo.utils.Message"*/-->
+      <div th:if="${message} != null" th:object="${message}" th:class="*{type}" id="toast">
+        <span th:text="*{title}">Title</span>
+        <span th:text="*{message}">Message</span>
+      </div>
+    </main>
+  </body>
+</html>

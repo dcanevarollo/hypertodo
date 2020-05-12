@@ -1,0 +1,125 @@
+<!--
+    @author : Douglas Canevarollo
+    @date   : 12/03/2020
+-->
+<!DOCTYPE html>
+<html
+  lang="pt_BR"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="fragments/layout :: layout(~{::title}, ~{::link}, ~{::script}, ~{::main})"
+>
+<head>
+  <title>Editar dados</title>
+
+  <link rel="stylesheet" th:href="@{/resources/styles/users/edit.css}">
+</head>
+
+<body>
+<main>
+  <div class="card-container">
+    <div class="card">
+      <header th:replace="fragments/card_header :: header('Editar dados', 'Atualize suas informações')"></header>
+
+      <div class="card-body">
+        <form action="edit.html" th:action="@{/usuarios/editar/salvar}" th:object="${user}" method="post">
+          <div class="form-container">
+            <div class="field-container">
+              <label for="name-input" class="required">Nome</label>
+              <input
+                id="name-input"
+                th:field="*{name}"
+                placeholder="Digite seu nome completo"
+                required
+              >
+              <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+            </div>
+
+            <div class="field-container">
+              <label for="email-input" class="required">E-mail</label>
+              <input
+                id="email-input"
+                th:field="*{email}"
+                type="email"
+                placeholder="Digite seu e-mail"
+                required
+              >
+              <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+            </div>
+
+            <div class="field-container">
+              <label for="password-input" class="required">Senha atual</label>
+              <input
+                id="password-input"
+                th:field="*{password}"
+                type="password"
+                placeholder="Informe sua senha"
+                required
+              >
+              <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+            </div>
+
+            <button id="submit-button" type="submit" disabled>ATUALIZAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card">
+      <header th:replace="fragments/card_header :: header('Nova senha', 'Atualize sua senha')"></header>
+
+      <div class="card-body">
+        <form action="edit.html" th:action="@{/usuarios/editar/senha}" th:object="${newPassword}" method="post">
+          <div class="form-container">
+            <div class="fields-row">
+              <div class="field-container">
+                <label for="new-password-input" class="required">Nova senha</label>
+                <input
+                  id="new-password-input"
+                  th:field="*{newPassword}"
+                  type="password"
+                  placeholder="Digite sua nova senha"
+                  required
+                >
+                <span th:if="${#fields.hasErrors('newPassword')}" th:errors="*{newPassword}"></span>
+              </div>
+
+              <div class="field-container">
+                <label for="confirm-new-password-input" class="required">Confirmação</label>
+                <input
+                  id="confirm-new-password-input"
+                  type="password"
+                  placeholder="Confirme sua nova senha"
+                  required
+                >
+                <span id="confirm-new-password-error" hidden>As senhas não coincidem</span>
+              </div>
+            </div>
+
+            <div class="field-container">
+              <label for="current-password-input" class="required">Senha atual</label>
+              <input
+                id="current-password-input"
+                th:field="*{currentPassword}"
+                type="password"
+                placeholder="Digite sua senha atual"
+                required
+              >
+              <span th:if="${#fields.hasErrors('currentPassword')}" th:errors="*{currentPassword}"></span>
+            </div>
+
+            <button id="submit-new-password-button" type="submit" disabled>ATUALIZAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div th:if="${message} != null" th:object="${message}" th:class="*{type}" id="toast">
+    <span th:text="*{title}">Title</span>
+    <span th:text="*{message}">Message</span>
+  </div>
+</main>
+
+<script type="text/javascript" th:src="@{/resources/scripts/users/edit.js}"></script>
+</body>
+</html>

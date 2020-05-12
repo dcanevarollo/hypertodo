@@ -1,0 +1,113 @@
+#navbar {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 4px 0 10px #0000001c;
+  z-index: 1;
+  top: 0;
+  left: 0;
+}
+#navbar .navbar-header {
+  display: flex;
+  height: 100%;
+  width: 25%;
+  padding: 8px 16px;
+  background: linear-gradient(45deg, #80A8F8, #77F3C9);
+}
+@media (max-width: 768px) {
+  #navbar .navbar-header {
+    width: 35%;
+  }
+}
+@media (max-width: 425px) {
+  #navbar .navbar-header {
+    width: 50%;
+  }
+}
+#navbar .navbar-header img {
+  width: 35px;
+  height: 35px;
+  margin-right: 16px;
+  border: 5px solid white;
+  border-radius: 50%;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-header img {
+    display: none;
+  }
+}
+#navbar .navbar-header .header-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-header .header-info {
+    flex: 1;
+  }
+}
+#navbar .navbar-header .header-info span:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-header .header-info span:first-child {
+    font-size: 14px;
+  }
+}
+#navbar .navbar-header .header-info span:last-child {
+  font-weight: 300;
+  font-size: 14px;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-header .header-info span:last-child {
+    font-size: 12px;
+  }
+}
+#navbar .navbar-links {
+  width: 75%;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  #navbar .navbar-links {
+    width: 65%;
+  }
+}
+@media (max-width: 425px) {
+  #navbar .navbar-links {
+    width: 50%;
+  }
+}
+#navbar .navbar-links a {
+  margin-right: 16px;
+}
+#navbar .navbar-links a.active {
+  color: #80A8F8;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-links a {
+    display: none;
+  }
+}
+#navbar .navbar-links span {
+  display: none;
+  color: #757575;
+  transition: 0.3s ease;
+}
+#navbar .navbar-links span:hover {
+  color: #80A8F8;
+}
+@media (max-width: 425px) {
+  #navbar .navbar-links span {
+    display: block;
+    float: right;
+  }
+}
+/*# sourceMappingURL=sidebar.css.map */

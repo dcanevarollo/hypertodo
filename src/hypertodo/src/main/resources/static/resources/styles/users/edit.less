@@ -1,0 +1,26 @@
+@import "./create";
+
+main {
+  @media (max-width: 768px) {
+    height: fit-content;
+  }
+
+  .card-container {
+    align-items: flex-start;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .card:first-of-type {
+      margin-right: 30px;
+
+      @media (max-width: 768px) {
+        margin-right: 0;
+        margin-bottom: 30px;
+      }
+    }
+  }
+}

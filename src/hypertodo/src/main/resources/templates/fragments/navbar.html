@@ -1,0 +1,42 @@
+<!--
+    @author : Douglas Canevarollo
+    @date   : 01/04/2020
+-->
+<!DOCTYPE html>
+<html
+  lang="pt_BR"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+>
+  <nav sec:authorize="isAuthenticated()" th:fragment="navbar">
+    <div id="navbar">
+      <div class="navbar-header">
+        <img src="navbar.html" th:src="@{/resources/images/avatar.png}" alt="Avatar">
+
+        <div class="header-info">
+          <span sec:authentication="name">Name</span>
+          <span sec:authorize="hasRole('ROLE_USER')">USUÁRIO</span>
+        </div>
+      </div>
+
+      <div class="navbar-links">
+        <a
+          href="navbar.html"
+          th:href="@{/tarefas}"
+          th:class="${#request.getRequestURI()} == '/tarefas' ? 'active' : _"
+        >
+          Tarefas
+        </a>
+        <a
+          href="navbar.html"
+          th:href="@{/usuarios/editar}"
+          th:class="${#request.getRequestURI()} == '/usuarios/editar' ? 'active' : _"
+        >
+          Editar dados
+        </a>
+        <a href="navbar.html" th:href="@{/logout}">Sair</a>
+        <span>Menu</span>
+      </div>
+    </div>
+  </nav>
+</html>

@@ -1,0 +1,108 @@
+<!--
+    @author : Douglas Canevarollo
+    @date   : 12/03/2020
+-->
+<!DOCTYPE html>
+<html
+  lang="pt_BR"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="fragments/layout :: layout(~{::title}, ~{::link}, ~{::script}, ~{::main})"
+  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Tarefas</title>
+
+  <link rel="stylesheet" th:href="@{/resources/styles/tasks/index.css}">
+  <link rel="stylesheet" th:href="@{/resources/styles/shared.css}">
+</head>
+
+<body>
+<main>
+
+  <div class="card-container">
+    <div class="side-bar">
+
+      <div class="card-header">
+        <img src="index.html" th:src="@{/resources/images/white-logo.png}" alt="Logo" height="40px"/>
+      </div>
+
+      <div class="card-body">
+        <span class="add-task-title">ADICIONAR TAREFA</span>
+        <form action="index.html" th:action="@{/tarefas/nova}" th:object="${task}" method="post">
+          <div class="form-container">
+            <div class="fields-row">
+              <div class="field-container">
+                <input
+                  class="input dark"
+                  id="title-input"
+                  th:field="*{title}"
+                  placeholder="Digite o título da tarefa"
+                  required
+                >
+                <label for="title-input" class="required"><i class="fas fa-edit input-icon"></i></label>
+                <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+              </div>
+              <div class="field-container">
+                <input id="description-input" class="input dark" th:field="*{description}" placeholder="Descrição"/>
+                <label for="description-input"><i class="fas fa-align-left input-icon"></i></label>
+              </div>
+            </div>
+
+            <button id="submit-button" class="primary-button" type="submit" disabled>ADICIONAR</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="user">
+        <div class="user-avatar"></div>
+        <span sec:authentication="name" class="user-name">Name</span>
+        <span sec:authorize="hasRole('ROLE_USER')">USUÁRIO</span>
+        <a href="index.html" th:href="@{/logout}" class="logout">FAZER LOGOUT</a>
+      </div>
+
+    </div>
+
+    <div class="contet">
+      <div class="card-body">
+        <h2 class="section-title">TAREFAS PENDENTES: </h2>
+        <div th:each="task : ${tasks}" th:if="${task.done} == false" class="task-item">
+          <div class="task-text">
+            <h3 th:text="${task.title}" class="task-title"></h3>
+            <span th:text="${task.description}" class="text-desc"></span>
+          </div>
+          <div class="task-buttons">
+            <form action="index.html" th:action="@{/tarefas/finalizar/{id}(id=${task.id})}" method="post">
+              <button class="finish" type="submit" th:disabled="${task.done}"><i class="fas fa-check"></i></button>
+            </form>
+            <form action="index.html" th:action="@{/tarefas/remover/{id}(id=${task.id})}" method="post">
+              <button class="delete" type="submit"><i class="fas fa-times"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h2 class="section-title">TAREFAS CONLUIDAS: </h2>
+        <div th:each="task : ${tasks}" th:if="${task.done} == true" class="task-item done">
+          <div class="task-text">
+            <h3 th:text="${task.title}" class="task-title"></h3>
+            <span th:text="${task.description}" class="text-desc"></span>
+          </div>
+          <div class="task-buttons">
+            <form action="index.html" th:action="@{/tarefas/remover/{id}(id=${task.id})}" method="post">
+              <button class="delete" type="submit"><i class="fas fa-times"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div th:if="${message} != null" th:object="${message}" th:class="*{type}" id="toast">
+    <span th:text="*{title}">Title</span>
+    <span th:text="*{message}">Message</span>
+  </div>
+</main>
+
+<script type="text/javascript" th:src="@{/resources/scripts/tasks/index.js}"></script>
+</body>
+</html>

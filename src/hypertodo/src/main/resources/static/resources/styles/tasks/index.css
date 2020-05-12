@@ -1,0 +1,194 @@
+.card-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.card-body{
+    margin-bottom: 40px;
+}
+
+.side-bar{
+    height: 100%;
+    width: 400px;
+    background: #2C2C2C;
+    padding: 20px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.card-header{
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.contet{
+    width: 100%;
+    background: #202020;
+}
+
+.side-bar form{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.add-task-title{
+    color: #FBA35D;
+    font-weight: 100;
+}
+
+textarea{
+    resize: none;
+    padding: 10px 10px 10px 50px !important;
+    height: auto !important;
+}
+
+
+.contet{
+    padding: 30px 40px;
+    overflow: auto;
+}
+
+.section-title{
+    font-weight: 200;
+    font-size: 20px;
+    color: #ffffff95;
+    margin-bottom: 20px;
+}
+
+.task-item{
+    background: #2C2C2C;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 5px;
+    min-height: 80px;
+}
+
+.task-item.done{
+    opacity: 0.5;
+}
+
+.task-title{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.text-desc{
+    color: white;
+    opacity: 0.7;
+    font-weight: 100;
+}
+
+.task-buttons{
+    display: flex;
+}
+
+.task-buttons button{
+    margin-left: 10px;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.task-buttons button:hover{
+    opacity: 0.8;
+}
+
+.delete{
+    background: #BC3C3C;
+}
+
+
+.finish{
+    background: #3CBC60;
+}
+
+.user{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    bottom: 40px;
+    width: calc(100% - 60px);
+
+}
+
+.user-name{
+    color: white;
+    font-size: 20px;
+}
+
+.logout{
+    font-size: 12px;
+}
+
+.logout:hover{
+    color: #FBA35D;
+}
+
+.user-avatar{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: url("https://www.pelando.com.br/assets/img/profile-placeholder_f56af.png");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 10px;
+}
+
+
+@media (max-width:480px){
+    .card-container{
+        flex-direction: column;
+    }
+
+    .side-bar{
+        width: 100%;
+    }
+
+    .side-bar form{
+        margin-bottom: 0px;
+    }
+
+    .card-header{
+        text-align: left;
+    }
+
+    .user{
+        top: 20px;
+        right: 20px;
+        bottom: auto;
+        width: auto;
+    }
+
+    .user-name{
+        text-align: right;
+    }
+
+    .card-body{
+        margin-bottom: 0;
+    }
+
+    .user-avatar{
+        display: none;
+    }
+
+    .contet{
+        width: 100%;
+        height: auto;
+        overflow: auto;
+    }
+}

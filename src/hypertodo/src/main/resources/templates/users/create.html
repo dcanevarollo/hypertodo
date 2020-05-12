@@ -1,0 +1,101 @@
+<!--
+    @author : Douglas Canevarollo
+    @date   : 12/03/2020
+-->
+<!DOCTYPE html>
+<html
+  lang="pt_BR"
+  xmlns:th="http://www.thymeleaf.org"
+  th:replace="fragments/layout ::layout(~{::title}, ~{::link}, ~{::script}, ~{::main})"
+>
+<head>
+  <title>Entrar</title>
+
+  <link rel="stylesheet" th:href="@{/resources/styles/users/create.css}">
+  <link rel="stylesheet" th:href="@{/resources/styles/shared.css}">
+</head>
+
+<body>
+<main>
+
+  <div class="page-container">
+
+    <div class="left">
+      <div class="card-header">
+        <img src="create.html" th:src="@{/resources/images/hypertodo_logo.png}" alt="Logo" height="50px"/>
+      </div>
+      <div class="signup">
+        <h2 class="mb-20 black-title">BEM VINDO AO TIME!</h2>
+        <p>Preencha o formulário para começar a organizar suas tarefas.</p>
+        <p class="mb-10">Caso já tenha um cadastro faça </p>
+        <a href="/login" class="link-cadastro" th:href="@{/login}">Login</a>
+      </div>
+    </div>
+
+    <div class="right">
+      <h2 class="withe-title">FAZER CADASTRO</h2>
+      <p class="mb-20">CADASTRO DE ACESSO AO HYPERTODO</p>
+
+      <form action="create.html" th:action="@{/usuarios/cadastro/salvar}" th:object="${user}" method="post">
+        <div class="form-container">
+          <div class="field-container">
+            <input
+              class="input light"
+              id="name-input"
+              th:field="*{name}"
+              placeholder="Digite seu nome completo"
+              required
+            >
+            <label for="name-input" class="required"><i class="fas fa-user input-icon"></i></label>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+          </div>
+
+          <div class="field-container">
+            <input
+              class="input light"
+              id="email-input"
+              th:field="*{email}"
+              type="email"
+              placeholder="Digite seu e-mail"
+              required
+            >
+            <label for="email-input" class="required"><i class="fas fa-envelope input-icon"></i></label>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+          </div>
+
+          <div class="field-container">
+            <input
+              class="input light"
+              id="password-input"
+              th:field="*{password}"
+              type="password"
+              placeholder="Informe uma senha"
+              required
+            >
+            <label for="password-input" class="required"><i class="fas fa-lock input-icon"></i></label>
+            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+          </div>
+
+          <div class="field-container">
+            <input id="confirm-password-input" class="input light" type="password" placeholder="Confirme sua senha"
+                   required>
+            <label for="confirm-password-input" class="required"><i class="fas fa-lock input-icon"></i></label>
+            <span id="confirm-password-error" hidden>As senhas não coincidem</span>
+          </div>
+
+          <button id="submit-button" class="primary-button" type="submit" disabled>Cadastrar</button>
+        </div>
+      </form>
+      <p class="copyright">Copyright 2020 - Grupo de Banco de Dados (GBD)</p>
+    </div>
+  </div>
+
+  <!--/*@thymesVar id="message" type="com.grupogbd.treinamento.hypertodo.utils.Message"*/-->
+  <div th:if="${message} != null" th:object="${message}" th:class="*{type}" id="toast">
+    <span th:text="*{title}">Title</span>
+    <span th:text="*{message}">Message</span>
+  </div>
+  <script type="text/javascript" th:src="@{/resources/scripts/users/create.js}"></script>
+</main>
+</body>
+</html>
