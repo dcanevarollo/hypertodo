@@ -1,7 +1,7 @@
-# Getting Started
+# Iniciando
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Documentação de referência
+Para referência adicional, considere as seguintes seções:
 
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/maven-plugin/)
@@ -12,7 +12,7 @@ For further reference, please consider the following sections:
 * [Thymeleaf](https://docs.spring.io/spring-boot/docs/2.2.5.RELEASE/reference/htmlsingle/#boot-features-spring-mvc-template-engines)
 
 ### Guides
-The following guides illustrate how to use some features concretely:
+Os seguintes guias ilustram como usar alguns recursos concretamente:
 
 * [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
 * [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
